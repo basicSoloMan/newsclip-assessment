@@ -10,6 +10,7 @@ create table if not exists NCA.Variants (
     variant_code varchar(10),
     variant_description varchar(50),
     variant_color varchar(15),
+    variant_name varchar(50),
     primary key (variant_id)
 );
 
