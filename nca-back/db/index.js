@@ -82,6 +82,40 @@ ncadb.oneItemVariant = (itemCode, variantCode) => {
   });
 };
 
+ncadb.gettAllModels = () => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `select *
+      from Items`,
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
+ncadb.itemsPerVariantName = (variantName) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `select distinct item_code,item_name
+      from ItemVariantStock
+        inner join Items on ivs_item_id = item_id
+        inner join Variants on ivs_variant_id = variant_id
+          and variant_name = ?`,
+      [variantName],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
 ncadb.updateItemVariantStock = (itemCode, variantCode, quantity) => {
   return new Promise((resolve, reject) => {
     pool.query(
@@ -92,6 +126,84 @@ ncadb.updateItemVariantStock = (itemCode, variantCode, quantity) => {
           and variant_code = ? 
       set ivs_quantity = ?`,
       [itemCode, variantCode, quantity],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
+ncadb.insertNewItem = (code, name) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `insert into Items (item_code,item_name) 
+        values (?,?)`,
+      [code, name],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
+ncadb.insertNewVariant = (code, description, color, name) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `insert into Variants (variant_code,variant_description,variant_color,variant_name) 
+        values (?,?,?,?)`,
+      [code, description, color, name],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
+ncadb.getItemId = (item) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `select item_id from Items where item_code = ?`,
+      [item],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
+ncadb.getVariantId = (variant) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `select variant_id from Variants where variant_code = ?`,
+      [variant],
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
+ncadb.addVariantToItem = (item_id, variant_id) => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `insert into ItemVariantStock (ivs_item_id,ivs_variant_id)
+        values(?,?)`,
+      [item_id, variant_id],
       (err, results) => {
         if (err) {
           return reject(err);

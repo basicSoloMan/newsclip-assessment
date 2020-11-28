@@ -7,18 +7,35 @@ const {
   getAllItemsPerVariant,
   getAllVariantsPerItem,
   getOneItemVariant,
+  getModelsPerVariantName,
+  getAllModels,
   updateItemVariantStock,
+  insertNewItem,
+  insertNewVariant,
+  addVariantsToItems,
 } = require('../controllers');
 
-// POST /api/nca/item-variant-stock/
+// POST /item
+// Inserts a new item
+router.post('/item', insertNewItem);
+
+// POST /variant
+// Inserts a new variant
+router.post('/variants', insertNewVariant);
+
+// POST /item-variant-stock/
 // Updates the stock levels of an item variant
 router.post('/item-variant-stock', updateItemVariantStock);
 
-// GET /api/nca/variant/:code
+// POST /add-variant/:itemCode
+// Adds a variant to an item
+router.post('/add-variant:itemCode', addVariantsToItems);
+
+// GET /variant/:code
 // Gets all vehicle models that has a specific variant
 router.get('/variant/:code', getAllItemsPerVariant);
 
-// GET /api/nca/item/:code
+// GET /item/:code
 // Gets all variant for a specific vehicle model
 router.get('/item/:code', getAllVariantsPerItem);
 
@@ -26,7 +43,15 @@ router.get('/item/:code', getAllVariantsPerItem);
 // Get a specific item variant
 router.get('/item-variant/:itemCode/:variantCode', getOneItemVariant);
 
-// GET /api/nca/
+// GET /models/:name
+// Get all of the models by variant name
+router.get('/models/:name', getModelsPerVariantName);
+
+// GET /models
+// Gets all models
+router.get('/models', getAllModels);
+
+// GET /
 // Gets all items and all their variants
 router.get('/', getAllItemVariants);
 
