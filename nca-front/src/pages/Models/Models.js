@@ -68,7 +68,6 @@ const Models = () => {
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <div>Model Code</div>
             <div>Model Description</div>
-            <div>Add Variant</div>
           </div>
 
           {isLoading && <div>Loading...</div>}

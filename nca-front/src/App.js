@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import Variants from './pages/Variants/Variants';
 import Models from './pages/Models/Models';
-import Stock from './pages/Stock/Stock';
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
             <Nav className="mr-auto">
               <Nav.Link href="/models">Models</Nav.Link>
               <Nav.Link href="/variants">Variants</Nav.Link>
-              <Nav.Link href="/stock">Stock</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -30,9 +28,6 @@ function App() {
           </Route>
           <Route path="/models">
             <Models />
-          </Route>
-          <Route path="/stock">
-            <Stock />
           </Route>
         </Switch>
       </Router>
