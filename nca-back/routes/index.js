@@ -9,6 +9,7 @@ const {
   getOneItemVariant,
   getModelsPerVariantName,
   getAllModels,
+  getAllVariants,
   updateItemVariantStock,
   insertNewItem,
   insertNewVariant,
@@ -29,7 +30,7 @@ router.post('/item-variant-stock', updateItemVariantStock);
 
 // POST /add-variant/:itemCode
 // Adds a variant to an item
-router.post('/add-variant:itemCode', addVariantsToItems);
+router.post('/add-variant', addVariantsToItems);
 
 // GET /variant/:code
 // Gets all vehicle models that has a specific variant
@@ -50,6 +51,10 @@ router.get('/models/:name', getModelsPerVariantName);
 // GET /models
 // Gets all models
 router.get('/models', getAllModels);
+
+// GET /models
+// Gets all models
+router.get('/variants', getAllVariants);
 
 // GET /
 // Gets all items and all their variants

@@ -97,6 +97,21 @@ ncadb.gettAllModels = () => {
   });
 };
 
+ncadb.gettAllVariants = () => {
+  return new Promise((resolve, reject) => {
+    pool.query(
+      `select *
+      from Variants`,
+      (err, results) => {
+        if (err) {
+          return reject(err);
+        }
+        return resolve(results);
+      }
+    );
+  });
+};
+
 ncadb.itemsPerVariantName = (variantName) => {
   return new Promise((resolve, reject) => {
     pool.query(

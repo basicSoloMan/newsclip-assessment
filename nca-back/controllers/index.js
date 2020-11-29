@@ -55,13 +55,15 @@ exports.insertNewVariant = async (req, res) => {
 
 exports.addVariantsToItems = async (req, res) => {
   try {
-    const itemCode = req.params.itemCode;
-    const { variantCode } = req.body;
+    const { itemCode, variantCode } = req.body;
 
     let itemId = await db.getItemId(itemCode);
     let variantId = await db.getVariantId(variantCode);
 
-    let results = await db.addVariantToItem(itemId, variantId);
+    let iid = itemId[0].item_id;
+    let vid = variantId[0].variant_id;
+
+    let results = await db.addVariantToItem(iid, vid);
     res.send('Inserted');
   } catch (error) {
     console.error(error.message);
@@ -102,6 +104,16 @@ exports.getAllVariantsPerItem = async (req, res) => {
 exports.getAllModels = async (req, res) => {
   try {
     let results = await db.gettAllModels();
+    res.json(results);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
+exports.getAllVariants = async (req, res) => {
+  try {
+    let results = await db.gettAllVariants();
     res.json(results);
   } catch (error) {
     console.error(error.message);
