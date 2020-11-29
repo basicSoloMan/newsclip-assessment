@@ -3,6 +3,7 @@ import { instance } from '../../constants';
 
 import { Card, Modal, Button, Form } from 'react-bootstrap';
 import Item from './Item/Item';
+import { ItemHeader } from './Styles';
 
 const Models = () => {
   const [toggle, setToggle] = useState(false);
@@ -65,12 +66,13 @@ const Models = () => {
             </Button>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+          <ItemHeader>
             <div>Model Code</div>
             <div>Model Description</div>
-          </div>
+          </ItemHeader>
 
           {isLoading && <div>Loading...</div>}
+
           {!isLoading &&
             models.map((model) => <Item key={model.item_id} model={model} />)}
         </Card.Body>

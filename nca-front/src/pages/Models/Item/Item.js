@@ -13,6 +13,8 @@ import {
   Form,
 } from 'react-bootstrap';
 
+import { AccordionHeader, ItemWrapper, ItemContent } from '../Styles';
+
 const Item = ({ model }) => {
   const [accordion, setAccordion] = useState(false);
   const [variantToggle, setVariantToggle] = useState(false);
@@ -77,26 +79,28 @@ const Item = ({ model }) => {
   };
 
   return (
-    <Fragment>
-      <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+    <ItemWrapper>
+      <ItemContent>
         <div>{model.item_code}</div>
         <div>{model.item_name}</div>
-      </div>
-      <div colSpan={2}>
-        <div onClick={() => setAccordion(!accordion)}>Variants</div>
+      </ItemContent>
+      <div>
+        <AccordionHeader onClick={() => setAccordion(!accordion)}>
+          Variants
+        </AccordionHeader>
         <Collapse in={accordion}>
-          <Container>
+          <div div style={{ padding: '10px' }}>
             <Row>
-              <Col>
+              <Col style={{ textAlign: 'left' }}>
                 <h6>Name</h6>
               </Col>
-              <Col>
+              <Col style={{ textAlign: 'left' }}>
                 <h6>Colour</h6>
               </Col>
-              <Col>
+              <Col style={{ textAlign: 'left' }}>
                 <h6>Quantity</h6>
               </Col>
-              <Col>
+              <Col style={{ textAlign: 'left', width: '10%' }}>
                 <Button onClick={() => getAllVariants()}>Add</Button>
               </Col>
             </Row>
@@ -111,7 +115,7 @@ const Item = ({ model }) => {
                 />
               ))
             )}
-          </Container>
+          </div>
         </Collapse>
       </div>
       <Modal
@@ -148,7 +152,7 @@ const Item = ({ model }) => {
           <Button onClick={(e) => addNewVariant(e)}>Save</Button>
         </Modal.Footer>
       </Modal>
-    </Fragment>
+    </ItemWrapper>
   );
 };
 

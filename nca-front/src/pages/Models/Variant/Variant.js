@@ -47,14 +47,14 @@ const Variant = ({ variant, setVariants }) => {
       <Row
         style={{
           padding: '10px 0',
-          borderBottom: '1px solid gray',
-          alignItems: 'center',
+          backgroundColor: 'rgba(187, 194, 201, 0.5)',
+          marginBottom: 10,
         }}
       >
-        <Col>
+        <Col style={{ textAlign: 'left' }}>
           <p>{item.variant_name}</p>
         </Col>
-        <Col>
+        <Col style={{ textAlign: 'left' }}>
           <p>{item.variant_color}</p>
         </Col>
         <Col style={{ display: 'flex', gap: 5 }}>
@@ -65,7 +65,8 @@ const Variant = ({ variant, setVariants }) => {
             step="1"
             value={quantity}
           />
-
+        </Col>
+        <Col>
           <Button
             variant="success"
             disabled={quantity !== item.ivs_quantity ? false : true}
