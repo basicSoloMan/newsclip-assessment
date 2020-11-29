@@ -1,35 +1,15 @@
 import styled from 'styled-components';
 
-import { Row } from 'react-bootstrap';
-
-export const AccordionHeader = styled.div`
-  padding: 5px 10px;
-  text-align: left;
-  /* background-color: #28a745; */
-  border-left: 1px solid rgba(187, 194, 201, 0.5);
-  border-right: 1px solid rgba(187, 194, 201, 0.5);
-  border-bottom: 1px solid rgba(187, 194, 201, 0.5);
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  color: black;
-  font-size: 1rem;
-  margin-bottom: 10px;
-
-  &:hover {
-    cursor: pointer;
-    background-color: rgba(52, 58, 64, 0.2);
-    border: 1px solid rgba(187, 194, 201, 0.5);
-  }
-`;
-
 export const ItemHeader = styled.div`
   background-color: rgba(52, 58, 64, 0.5);
   display: flex;
+  margin-bottom: 10px;
+  border-radius: 4px;
 
   & div {
     padding: 7px;
     text-align: left;
-    width: 50%;
+    width: 25%;
     padding: 3px 10px;
     font-size: 1.25rem;
     color: rgba(52, 58, 64, 1);
@@ -39,9 +19,11 @@ export const ItemHeader = styled.div`
 export const ItemContent = styled.div`
   display: flex;
   background-color: rgba(187, 194, 201, 0.5);
+  margin-bottom: 5px;
+  border-radius: 2px;
 
   & div {
-    width: 50%;
+    width: 25%;
     text-align: left;
     padding: 3px 10px;
   }

@@ -3,6 +3,8 @@ import { instance } from '../../constants';
 
 import { Card, Modal, Button, Form } from 'react-bootstrap';
 
+import { ItemContent, ItemHeader } from './Styles';
+
 const Variants = () => {
   const [variants, setVariants] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -65,31 +67,19 @@ const Variants = () => {
             </Button>
           </div>
 
-          <div
-            style={{
-              textAlign: 'left',
-              display: 'flex',
-              justifyContent: 'space-around',
-            }}
-          >
-            <div style={{ textAlign: 'left' }}>Variant Code</div>
-            <div style={{ textAlign: 'left' }}>Variant Description</div>
-            <div style={{ textAlign: 'left' }}>Variant Colour</div>
-            <div style={{ textAlign: 'left' }}>Variant Name</div>
-          </div>
+          <ItemHeader>
+            <div>Variant Code</div>
+            <div>Variant Description</div>
+            <div>Variant Colour</div>
+            <div>Variant Name</div>
+          </ItemHeader>
 
           <Fragment>
             {isLoading ? (
               <div>Loading...</div>
             ) : (
-              variants.map((variant) => (
-                <div
-                  style={{
-                    textAlign: 'left',
-                    display: 'flex',
-                    justifyContent: 'space-around',
-                  }}
-                >
+              variants.map((variant, index) => (
+                <ItemContent key={index}>
                   <div style={{ textAlign: 'left' }}>
                     {variant.variant_code}
                   </div>
@@ -102,7 +92,7 @@ const Variants = () => {
                   <div style={{ textAlign: 'left' }}>
                     {variant.variant_name}
                   </div>
-                </div>
+                </ItemContent>
               ))
             )}
           </Fragment>

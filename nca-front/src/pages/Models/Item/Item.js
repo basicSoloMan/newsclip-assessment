@@ -13,7 +13,12 @@ import {
   Form,
 } from 'react-bootstrap';
 
-import { AccordionHeader, ItemWrapper, ItemContent } from '../Styles';
+import {
+  AccordionHeader,
+  ItemWrapper,
+  ItemContent,
+  VariantHeader,
+} from '../Styles';
 
 const Item = ({ model }) => {
   const [accordion, setAccordion] = useState(false);
@@ -90,17 +95,17 @@ const Item = ({ model }) => {
         </AccordionHeader>
         <Collapse in={accordion}>
           <div div style={{ padding: '10px' }}>
-            <Row>
+            <Row style={{ marginBottom: '10px' }}>
               <Col style={{ textAlign: 'left' }}>
-                <h6>Name</h6>
+                <VariantHeader>Name</VariantHeader>
               </Col>
               <Col style={{ textAlign: 'left' }}>
-                <h6>Colour</h6>
+                <VariantHeader>Colour</VariantHeader>
               </Col>
               <Col style={{ textAlign: 'left' }}>
-                <h6>Quantity</h6>
+                <VariantHeader>Quantity</VariantHeader>
               </Col>
-              <Col style={{ textAlign: 'left', width: '10%' }}>
+              <Col>
                 <Button onClick={() => getAllVariants()}>Add</Button>
               </Col>
             </Row>

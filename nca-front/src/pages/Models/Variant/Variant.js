@@ -60,9 +60,9 @@ const Variant = ({ variant, setVariants }) => {
         <Col style={{ display: 'flex', gap: 5 }}>
           <Form.Control
             onChange={(e) => handleChange(e)}
-            type="number"
+            style={{ minWidth: 40 }}
             name="quantity"
-            step="1"
+            type="number"
             value={quantity}
           />
         </Col>
@@ -71,6 +71,7 @@ const Variant = ({ variant, setVariants }) => {
             variant="success"
             disabled={quantity !== item.ivs_quantity ? false : true}
             onClick={(e) => handleSave(e)}
+            style={{ padding: '3px 6px' }}
           >
             Save
           </Button>
