@@ -19,6 +19,11 @@ Execute command yarn run dev to start server
 In a seperate terminal session navigate to the nca-front directory and yarn install
 Execute yarn run to launch app
 
+Note that the install commands is not to intall the app on a device, as it is a web app. 
+The install commands simply act to install the packages used to build the app
+
+No set up for the database is required as it currently points to a database hosted on heroku
+
 A tab in your default browser will open up with the app, if not, navigate to http://localhost:3000/
 
 
