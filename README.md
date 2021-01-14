@@ -35,3 +35,6 @@ Models has the vehicle models, and stock levels per variant for that model.
 Models also gives the user the ability to add new models and add new variants to existing models
 
 In the repo there are screenshots showing the pages
+
+# Current Status
+Inprogress of rewriting the API in Golang with a Postgres backend
